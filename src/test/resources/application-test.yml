@@ -1,0 +1,41 @@
+# ==========================================================
+# RentEase Backend: Test Profile (application-test.yml)
+# Fast, in-memory automated test execution
+# ==========================================================
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:rentease_test_db;DB_CLOSE_DELAY=-1;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: false
+        dialect: org.hibernate.dialect.H2Dialect
+  flyway:
+    enabled: false
+
+app:
+  jwt:
+    secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+    expiration-ms: 3600000
+    refresh-expiration-ms: 86400000
+  cors:
+    allowed-origins: "http://localhost:3000,http://localhost:5173"
+  platform:
+    default-city: Bengaluru
+    service-fee-percentage: 4.5
+    gst-percentage: 18.0
+  groq:
+    api-key: ""
+    model: llama-3.3-70b-versatile
+
+logging:
+  level:
+    root: WARN
+    com.rentease: INFO
