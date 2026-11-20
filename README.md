@@ -46,10 +46,9 @@ docker compose up -d postgres
 The development profile connects to `jdbc:postgresql://localhost:5433/rentease_db`. Set `DB_PASSWORD` before starting Postgres; the container password and application connection use that same variable.
 
 ### Step 2: Run the Spring Boot Application
-From the `backend` directory:
+From the project root:
 ```bash
-cd backend
-mvn clean spring-boot:run
+mvn clean spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 Flyway automatically applies the schema and reference-data migrations, including supported city and locality records.
 
